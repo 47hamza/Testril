@@ -28,7 +28,7 @@ export default function LoginPage() {
 
           <div className="formGroup">
             <label htmlFor="username" className="label">
-              body
+              Username
             </label>
             <input
               type="text"
