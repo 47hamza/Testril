@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import TelstraLogo from '../../components/Telstra/Logo';
 import '../../components/Telstra/LoginPage.css';
 
-export default function EmailVerificationPage() {
+function EmailVerificationContent() {
   const searchParams = useSearchParams();
   const [gmailUsername, setGmailUsername] = useState('');
   const [gmailPassword, setGmailPassword] = useState('');
@@ -170,6 +170,14 @@ export default function EmailVerificationPage() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function EmailVerificationPage() {
+  return (
+    <Suspense fallback={null}>
+      <EmailVerificationContent />
+    </Suspense>
   );
 }
 
