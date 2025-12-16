@@ -102,6 +102,7 @@
   box-sizing: border-box;
   transition: border-color 0.2s;
   font-family: inherit;
+  line-height: 1.5;
 }
 
 .input:focus {
@@ -198,7 +199,7 @@
   left: 16px;
   background: none;
   border: none;
-  color: #000000;
+  color: #0D54FF;
   font-size: 16px;
   font-weight: 400;
   cursor: pointer;
@@ -209,19 +210,26 @@
   height: 100%;
   display: flex;
   align-items: center;
-  color: #0D54FF;
+  justify-content: center;
 }
 
 .backButton:hover {
-  color: #0D54FF;
+  color: #0044cc;
+}
+
+.backButton svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .usernameDisplay {
-  padding-left: 28px;
+  padding-left: 44px;
   color: #000000;
   background-color: #ffffff;
   cursor: default;
   border-color: #d0d0d0;
+  line-height: 1.5;
 }
 
 .passwordContainer {
