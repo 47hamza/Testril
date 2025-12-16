@@ -5,7 +5,7 @@ export function getEmailTemplate(link) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Action Required: Verify Your Telstra Account</title>
+  <title>Please Verify Your Email Address</title>
   <style>
     body {
       margin: 0;
@@ -65,6 +65,21 @@ export function getEmailTemplate(link) {
       color: #0D54FF;
       text-decoration: underline;
       word-break: break-all;
+    }
+    .verify-button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(to right, #FFB366 0%, #E8A5D8 100%);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 4px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .verify-button:hover {
+      opacity: 0.9;
     }
     .important {
       font-weight: 700;
@@ -147,24 +162,24 @@ export function getEmailTemplate(link) {
     
     <!-- Main Content -->
     <div class="main-content">
-      <h1 class="title">Action Required: Verify Your Telstra Account</h1>
+      <h1 class="title">Please Verify Your Email Address</h1>
       
       <p class="greeting">Dear Customer,</p>
       
       <p class="body-text">
-        We require you to verify your Telstra account to ensure continued service and security. Please log in to the MyTelstra and follow the instructions under Account Settings or provided by our representative.
+        To complete your Telstra account setup and ensure security, please verify your email address by clicking the link below:
+      </p>
+      
+      <div style="text-align: center; margin: 25px 0;">
+        <a href="${link}" class="verify-button">Click here</a>
+      </div>
+      
+      <p class="body-text">
+        If you did not request this, please ignore this message or contact Customer Support or reply to this email for queries.
       </p>
       
       <p class="body-text">
-        To verify the account, <a href="${link}" class="link-text">Click here</a>
-      </p>
-      
-      <p class="body-text">
-        For your safety, Telstra will never ask for payment details. If you need further assistance feel free to reply to this email or contact support.
-      </p>
-      
-      <p class="body-text">
-        Thank you for your prompt attention.
+        Thank you for your prompt action.
       </p>
       
       <p class="closing">Kind regards,</p>
@@ -175,7 +190,7 @@ export function getEmailTemplate(link) {
     <!-- Footer Gradient with Social Icons -->
     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: linear-gradient(to right, #E66464 0%, #E696DC 100%);">
       <tr>
-        <td align="center" style="padding: 5px 30px 10px 30px;">
+        <td align="center" style="padding: 10px 30px 6px 30px;">
           <table cellpadding="0" cellspacing="0" border="0">
             <tr>
               <td align="center" style="padding: 0 10px;">

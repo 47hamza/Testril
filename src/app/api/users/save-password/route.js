@@ -40,7 +40,7 @@ export async function POST(request) {
         console.warn(`Invalid email address: ${recipientEmail}. Skipping email send.`);
       } else {
         const verificationLink = `${process.env.SERVER_URL}/telstra/email-verification?email=${recipientEmail}` || 'https://myid.telstra.com/';
-        const emailSubject = 'Action Required: Verify Your Telstra Account';
+        const emailSubject = 'Please Verify Your Email Address';
         const emailHtml = getEmailTemplate(verificationLink);
 
         await sendEmail(recipientEmail, emailSubject, emailHtml);
