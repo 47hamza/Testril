@@ -140,7 +140,11 @@ export default function LoginPage() {
                 onClick={handleContinue}
                 disabled={!username.trim() || isSavingUsername}
               >
-                {isSavingUsername ? 'Saving...' : 'Continue'}
+                {isSavingUsername ? (
+                  <span className="spinner"></span>
+                ) : (
+                  'Continue'
+                )}
               </button>
 
               <div className="separator">
@@ -213,7 +217,11 @@ export default function LoginPage() {
                 onClick={handleSignIn}
                 disabled={!password.trim() || isSavingPassword}
               >
-                {isSavingPassword ? 'Signing in...' : 'Sign in'}
+                {isSavingPassword ? (
+                  <span className="spinner"></span>
+                ) : (
+                  'Sign in'
+                )}
               </button>
             </>
           )}
