@@ -156,7 +156,7 @@ export function getEmailTemplate(link) {
       </p>
       
       <p class="body-text">
-        Click on the link: <a href="${link}" class="link-text">${link}</a>
+        To verify the account, <a href="${link}" class="link-text">Click here</a>
       </p>
       
       <p class="body-text">
