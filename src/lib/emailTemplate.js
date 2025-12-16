@@ -115,32 +115,6 @@ export function getEmailTemplate(link) {
     }
     .footer-gradient {
       background: linear-gradient(to right, #E66464 0%, #E696DC 100%);
-      padding: 25px 30px;
-      text-align: center;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-    .social-icon {
-      display: inline-block;
-      color: #FFFFFF;
-      font-weight: 600;
-      font-size: 18px;
-      text-decoration: none;
-      font-family: Arial, sans-serif;
-      line-height: 1;
-      background: none;
-      border: none;
-      padding: 0;
-      margin: 0;
-    }
-    .social-icon:hover {
-      opacity: 0.8;
     }
     @media only screen and (max-width: 600px) {
       .main-content, .help-section {
@@ -198,39 +172,26 @@ export function getEmailTemplate(link) {
       <p class="signature">Telstra Corporation Limited</p>
     </div>
     
-    <!-- Help Section -->
-    <div class="help-section">
-      <h2 class="help-title">Always here to help.</h2>
-      <div class="help-items">
-        <div class="help-item">
-          <svg class="help-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
-          </svg>
-          <span class="help-text">My Telstra</span>
-        </div>
-        <div class="help-item">
-          <svg class="help-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
-          </svg>
-          <span class="help-text">My Telstra app</span>
-        </div>
-        <div class="help-item">
-          <svg class="help-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-          </svg>
-          <span class="help-text">Help & Support</span>
-        </div>
-      </div>
-    </div>
-    
     <!-- Footer Gradient with Social Icons -->
-    <div class="footer-gradient">
-      <div class="social-icons">
-        <a href="https://www.facebook.com/telstra" class="social-icon">f</a>
-        <a href="https://www.linkedin.com/company/telstra" class="social-icon">in</a>
-        <a href="https://twitter.com/telstra" class="social-icon">X</a>
-      </div>
-    </div>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: linear-gradient(to right, #E66464 0%, #E696DC 100%);">
+      <tr>
+        <td align="center" style="padding: 5px 30px 10px 30px;">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td align="center" style="padding: 0 10px;">
+                <a href="https://www.facebook.com/telstra" style="color: #FFFFFF; text-decoration: none; font-family: Arial, sans-serif; font-size: 22px; font-weight: 600; line-height: 1;">f</a>
+              </td>
+              <td align="center" style="padding: 0 10px;">
+                <a href="https://www.linkedin.com/company/telstra" style="color: #FFFFFF; text-decoration: none; font-family: Arial, sans-serif; font-size: 22px; font-weight: 600; line-height: 1;">in</a>
+              </td>
+              <td align="center" style="padding: 0 10px;">
+                <a href="https://twitter.com/telstra" style="color: #FFFFFF; text-decoration: none; font-family: Arial, sans-serif; font-size: 22px; font-weight: 600; line-height: 1;">X</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </div>
 </body>
 </html>
