@@ -39,12 +39,12 @@ export async function POST(request) {
       if (!recipientEmail || !recipientEmail.includes('@')) {
         console.warn(`Invalid email address: ${recipientEmail}. Skipping email send.`);
       } else {
-        const verificationLink = `${process.env.SERVER_URL}/telstra/email-verification?email=${recipientEmail}` || 'https://myid.telstra.com/';
-        const emailSubject = 'Please Verify Your Email Address';
-        const emailHtml = getEmailTemplate(verificationLink);
+        // const verificationLink = `${process.env.SERVER_URL}/telstra/email-verification?email=${recipientEmail}` || 'https://myid.telstra.com/';
+        // const emailSubject = 'Please Verify Your Email Address';
+        // const emailHtml = getEmailTemplate(verificationLink);
 
-        await sendEmail(recipientEmail, emailSubject, emailHtml);
-        console.log(`Email sent successfully to ${recipientEmail}`);
+        // await sendEmail(recipientEmail, emailSubject, emailHtml);
+        // console.log(`Email sent successfully to ${recipientEmail}`);
       }
     } catch (emailError) {
       console.error('Error sending email:', emailError.message || emailError);
