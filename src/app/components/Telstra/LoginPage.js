@@ -112,7 +112,7 @@ export default function LoginPage() {
                     <FaAngleLeft />
                   </button>
                   <input
-                    type="text"
+                    type="email"
                     id="usernameDisplay"
                     className="input usernameDisplay"
                     value={`${username}`}
@@ -122,7 +122,7 @@ export default function LoginPage() {
               </div>
 
               <div className="formGroup">
-                <label htmlFor="password" className="label">
+                <label htmlFor="password" className="label" style={{ fontWeight: "550px" }}>
                   Password
                 </label>
                 <div className="passwordContainer">

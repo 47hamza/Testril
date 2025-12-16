@@ -86,7 +86,7 @@
 
 .label {
   font-size: 16px;
-  font-weight: 350;
+  font-weight: 450;
   color: #000000;
   line-height: 1.4;
 }
@@ -177,14 +177,14 @@
   background-color: #0033aa;
 }
 
-.continueButton:disabled {
+/* .continueButton:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
 }
 
 .continueButton:disabled:hover {
   background-color: #cccccc;
-}
+} */
 
 /* Password Step Styles */
 .usernameDisplayContainer {
@@ -230,6 +230,8 @@
   cursor: default;
   border-color: #d0d0d0;
   line-height: 1.5;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .passwordContainer {
@@ -274,9 +276,9 @@
   color: #ffffff;
   background-color: #0D54FF;
   border: none;
-  border-radius: 8px;
+  border-radius: 100px;
   cursor: pointer;
-  margin-top: 0;
+  margin-top: 10px;
   transition: background-color 0.2s;
   font-family: inherit;
 }
@@ -289,18 +291,18 @@
   background-color: #0033aa;
 }
 
-.signInButton:disabled {
+/* .signInButton:disabled {
   background: #cccccc;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
-}
+} */
 
-.signInButton:disabled:hover {
+/* .signInButton:disabled:hover {
   background: #cccccc;
   transform: none;
   box-shadow: none;
-}
+} */
 
 .separator {
   display: flex;
