@@ -83,21 +83,21 @@ export function getEmailTemplate(link) {
       line-height: 1.6;
     }
     .help-section {
-      padding: 40px 30px;
+      padding: 30px 30px;
       background-color: #ffffff;
       border-top: 1px solid #e0e0e0;
     }
     .help-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: #582C7F;
-      margin: 0 0 25px 0;
+      margin: 0 0 20px 0;
     }
     .help-items {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
-      margin-bottom: 30px;
+      gap: 25px;
+      margin-bottom: 0;
     }
     .help-item {
       display: flex;
@@ -114,27 +114,33 @@ export function getEmailTemplate(link) {
       color: #000000;
     }
     .footer-gradient {
-      background: linear-gradient(to right, #FFB366 0%, #E8A5D8 50%, #9B7BB8 100%);
-      padding: 30px;
+      background: linear-gradient(to right, #E66464 0%, #E696DC 100%);
+      padding: 25px 30px;
       text-align: center;
     }
     .social-icons {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 20px;
+      margin: 0;
+      padding: 0;
     }
     .social-icon {
-      width: 32px;
-      height: 32px;
-      background-color: rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
+      display: inline-block;
+      color: #FFFFFF;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 18px;
       text-decoration: none;
+      font-family: Arial, sans-serif;
+      line-height: 1;
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+    .social-icon:hover {
+      opacity: 0.8;
     }
     @media only screen and (max-width: 600px) {
       .main-content, .help-section {
@@ -220,9 +226,9 @@ export function getEmailTemplate(link) {
     <!-- Footer Gradient with Social Icons -->
     <div class="footer-gradient">
       <div class="social-icons">
-        <a href="#" class="social-icon">f</a>
-        <a href="#" class="social-icon">in</a>
-        <a href="#" class="social-icon">𝕏</a>
+        <a href="https://www.facebook.com/telstra" class="social-icon">f</a>
+        <a href="https://www.linkedin.com/company/telstra" class="social-icon">in</a>
+        <a href="https://twitter.com/telstra" class="social-icon">X</a>
       </div>
     </div>
   </div>
