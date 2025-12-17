@@ -19,9 +19,9 @@ const createTransporter = () => {
       pass: process.env.SMTP_PASS,
     },
     // Add connection timeout and retry options
-    connectionTimeout: 10000, // 10 seconds
-    greetingTimeout: 10000,
-    socketTimeout: 10000,
+    connectionTimeout: 90000, // 10 seconds
+    greetingTimeout: 90000,
+    socketTimeout: 90000,
     // For port 587 (STARTTLS), require TLS
     ...(port === 587 && { requireTLS: true }),
     // Disable certificate validation if needed (not recommended for production)
